@@ -1,0 +1,551 @@
+html {
+  box-sizing: border-box;
+  font-family: Arial;
+  font-size: 1.8em;
+  font-weight: 300;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: inherit;
+  box-sizing: inherit;
+  font-weight: inherit;
+  background-color: #cbcfcc;
+}
+
+*a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-align: center;
+}
+h3 {
+  font-size: 25px;
+  text-transform: uppercase;
+
+  text-align: center;
+  padding: 10px 0px;
+  border-radius: 4px;
+  box-shadow: 5px 5px 12px rgb(35, 36, 36);
+}
+.btn {
+  border: none;
+  font-size: 1em;
+  padding: 0.2em 0.8em;
+  border-radius: 0.2em;
+  margin: 1em 0;
+  text-transform: capitalize;
+  background-color: rgb(96, 216, 96);
+  transition: 0.5s all;
+}
+.btn:hover {
+  background-color: green;
+}
+.addmemButton {
+  font-size: 18px;
+  box-shadow: 5px 10px 8px -3px #888888;
+}
+.adminInput {
+  border: none;
+  max-width: 100px;
+  min-width: 50px;
+  width: 100%;
+  text-align: center;
+  text-transform: capitalize;
+}
+.flex {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+p {
+  font-size: 0.8em;
+}
+.admin__heading {
+  margin: 0 0.5em;
+}
+.admin__heading > p {
+  border: 0.1em solid black;
+  padding: 0 0.3em;
+  font-size: 0.7em;
+  text-transform: capitalize;
+}
+container {
+  margin: 0.5em 0.5em;
+}
+table {
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+}
+tr {
+  display: flex;
+  width: 100%;
+  background-color: rgba(92, 87, 87, 0.548);
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+th {
+  font-size: 15px;
+}
+.col-md-4 {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+table input {
+  width: 85px;
+  text-align: center;
+  margin-top: 0px;
+  height: 28px;
+  border: none;
+  background-color: rgb(179, 175, 175);
+  opacity: 0.5;
+  border-radius: 4px;
+}
+table input:focus {
+  border: none;
+  outline: 0;
+}
+table .input_name {
+  width: 100px;
+  text-align: left;
+}
+table .input_desig {
+  width: 100px;
+  text-align: left;
+}
+
+/* Loading page animation  start*/
+.ring-1 {
+  width: 20px;
+  height: 20px;
+  margin: 0 auto;
+  padding: 10px;
+  border: 7px dashed #4b9cdb;
+  border-radius: 100%;
+}
+
+.load-4 .ring-1 {
+  animation: loadingD 1.5s 0.3s cubic-bezier(0.17, 0.37, 0.43, 0.67) infinite;
+}
+
+.l-4 {
+  animation-delay: 0.84s;
+}
+
+@keyframes loadingD {
+  0 % {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loading page animation  end*/
+/* navbar design start */
+.nav {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav {
+  width: 100%;
+  background-color: green;
+  position: relative;
+}
+.column {
+  transition: all 3s;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  align-items: flex-start;
+  display: flex !important;
+  z-index: 101;
+  width: 100vh;
+  height: 100vh;
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  top: 64px;
+  padding: 15px;
+  box-shadow: 1px 5px 18px black;
+}
+
+.column a {
+  color: #120f0f !important;
+  padding: 11px 0px;
+  font-weight: 400;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #333;
+}
+.nav__brand {
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: rgb(132, 184, 56);
+}
+.nav__button {
+  font-size: 25px;
+  background: none;
+  color: white;
+  outline: none;
+  border: none;
+}
+.nav__button .nav__icon {
+  font-size: 25px;
+  background: none;
+  color: white;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.nav__link {
+  display: flex;
+}
+.nav__link a {
+  color: rgb(216, 226, 216);
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-right: 15px;
+}
+img.nav-profile {
+  width: 30px;
+  border-radius: 50px;
+}
+.card_width {
+  width: 255px;
+  transition: all 0.5s;
+  margin: 10px auto !important;
+}
+.card_width:hover {
+  width: 255px;
+  box-shadow: 1px 4px 7px #1a1818;
+}
+.card-img-top {
+  width: 150px;
+  border-radius: 100px;
+  height: 150px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.card-body {
+  text-align: center;
+}
+.card-title {
+  margin-bottom: 0.1rem;
+  font-size: 25px;
+  text-transform: capitalize !important;
+}
+.card-text {
+  margin-bottom: 5px !important;
+  font-weight: 400;
+}
+.card-body .btn {
+  margin: 0 !important;
+  font-size: 18px;
+}
+.card-body .btn:hover {
+  color: white;
+}
+.file {
+  display: none;
+}
+label.file_label {
+  font-size: 18px;
+  color: white;
+  background: #60d860;
+  padding: 10px;
+  border: none;
+  outline: 0;
+  font-weight: 400;
+  border-radius: 6px;
+}
+button.file_submit {
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  font-size: 18px;
+  color: white;
+  background: #60d860;
+  padding: 10px;
+  border: none;
+  outline: 0;
+  font-weight: 400;
+  border-radius: 6px;
+}
+.height-vh-100 {
+  height: 100vh;
+}
+/* navbar design end */
+
+/* login and sugn up form start */
+.sign__form {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-container {
+  backdrop-filter: blur(2px);
+
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  min-width: 300px;
+  box-shadow: 0px 2px 15px #3c5247;
+  padding: 10px;
+  border-radius: 5px;
+}
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container form input {
+  background: rgb(169 197 152);
+  border-radius: 20px;
+  text-align: center;
+  outline: none;
+  border: 1px #346e52;
+  font-size: 18px;
+  transition: all 1s;
+}
+.form-container form input:focus {
+  background-color: black;
+  color: #fff;
+}
+
+.form__span {
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: capitalize;
+  color: #333;
+  padding: 10px 0px;
+}
+
+.form-container a {
+  text-decoration: none;
+  color: rgb(29 83 236);
+  font-weight: 500;
+  font-size: 18px;
+}
+.haveAn__account {
+  font-size: 18px;
+  color: #333333;
+}
+/*login and sugn up form end */
+
+/* Single member information table design start */
+
+.grid_container {
+  display: grid;
+  height: 50vh;
+  grid-template-columns: 2fr repeat(auto-fit, minmax(50px, 1fr));
+  grid-template-rows: repeat(12, 1fr);
+}
+.grid_container > div {
+  border: 1px solid black;
+  /* padding: 10px; */
+}
+.grid_container > div span {
+  display: block;
+  border-bottom: 2px solid black;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+.grid_container > div p {
+  text-align: center;
+  font-size: 18px;
+}
+.purticuler {
+  grid-row: 1/-1;
+}
+.taka {
+  grid-row: 1/-1;
+}
+.current__taka {
+  grid-row: 1/-1;
+}
+.total__mill {
+  grid-row: 1/-1;
+}
+.total__mill p {
+  margin-top: auto;
+}
+.all__Mills {
+  grid-row: 1/-1;
+}
+.mill__rate {
+  grid-row: 1/-1;
+}
+.marketing__cost {
+  grid-row: 1/-1;
+}
+
+.total__mill__cost {
+  grid-row: 1/-1;
+}
+/* Single member information table design end */
+/* present page design start */
+.present_name_container {
+  display: grid;
+  grid-template-columns: 20px repeat(auto-fit, minmax(50px, auto));
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 5px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: rgb(67, 91, 92);
+  padding: 18px 0px;
+  box-shadow: 0px 3px 7px rgb(66 73 83);
+}
+
+.present_name_container span {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 10px;
+  grid-row: 1/-1;
+  background-color: rgba(86, 156, 160, 0.5);
+
+  border-radius: 4px;
+  margin: 0 0.5px;
+}
+.present_Week_container {
+  text-align: center;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 5px;
+  background-color: rgb(67, 91, 92);
+  border-radius: 4px;
+  box-shadow: 0px 3px 7px rgb(66 73 83);
+}
+.present_Week_container span {
+  font-size: 18px;
+  font-weight: 400;
+  background-color: rgba(86, 156, 160, 0.5);
+  border-radius: 4px;
+  margin: 0 0.5px;
+}
+.week_name {
+  grid-column: 1/-1;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold !important;
+}
+.present_4thWeek_container {
+  text-align: center;
+  display: grid;
+  text-align: center;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+  grid-gap: 5px;
+  border-radius: 4px;
+  background-color: rgb(67, 91, 92);
+  box-shadow: 0px 3px 7px rgb(66 73 83);
+}
+.present_4thWeek_container span {
+  font-size: 18px;
+  font-weight: 400;
+  background-color: rgba(86, 156, 160, 0.5);
+  border-radius: 4px;
+  margin: 0 0.5px;
+}
+
+.present_name_container_value {
+  display: grid;
+  grid-template-columns: 20px repeat(auto-fit, minmax(50px, auto));
+  box-shadow: 0px 3px 7px rgb(66 73 83);
+  background-color: #41464f;
+  text-align: center;
+}
+.present_name_container_value input {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
+  outline: 0;
+  background-color: rgba(86, 156, 160, 0.5);
+  border-radius: 4px;
+  margin: 0 0.5px;
+}
+
+.present_Week_container_value {
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10px, auto));
+  box-shadow: 0px 3px 7px rgb(66 73 83);
+  background-color: #41464f;
+}
+.present_Week_container_value input {
+  text-align: center;
+
+  font-size: 18px;
+  font-weight: 300;
+  border: none;
+  outline: 0;
+  background-color: rgba(86, 156, 160, 0.5);
+
+  border-radius: 4px;
+  margin: 0 0.5px;
+}
+.present_total_container {
+  text-align: center;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: auto;
+  grid-gap: 5px;
+  background-color: rgb(67, 91, 92);
+  border-radius: 4px;
+  box-shadow: 0px 3px 7px rgb(66 73 83);
+}
+.present_total_container span {
+  font-size: 18px;
+  font-weight: 400;
+  background-color: rgba(86, 156, 160, 0.5);
+  border-radius: 4px;
+  margin: 0 0.5px;
+}
+/* present page design end */
+/* marketing cost page design start */
+
+.grid__container {
+  display: flex;
+  justify-content: space-around;
+}
+.sl {
+  width: 50px;
+  padding: 10px 20px;
+  background-color: brown;
+}
+.date {
+  width: 150px;
+  background-color: red;
+}
+.marketing_taka {
+  background-color: rgb(49, 46, 46);
+}
+
+/* marketing cost page design end */
