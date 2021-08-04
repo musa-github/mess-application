@@ -52,9 +52,9 @@ h3 {
 .btn:hover {
   background-color: green;
 }
-.addmemButton {
-  font-size: 18px;
-  box-shadow: 5px 10px 8px -3px #888888;
+.notice {
+  font-size: 0.6rem;
+  color: green !important;
 }
 .adminInput {
   border: none;
@@ -82,9 +82,7 @@ p {
   font-size: 0.7em;
   text-transform: capitalize;
 }
-container {
-  margin: 0.5em 0.5em;
-}
+
 table {
   font-size: 20px;
   text-align: center;
@@ -148,7 +146,7 @@ table .input_desig {
 }
 
 @keyframes loadingD {
-  0 % {
+  0% {
     transform: rotate(0deg);
   }
   50% {
@@ -166,38 +164,15 @@ table .input_desig {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-nav {
   width: 100%;
-  background-color: green;
+  background-color: rgb(21, 9, 66);
   position: relative;
-}
-.column {
-  transition: all 3s;
-  flex-direction: column-reverse;
-  justify-content: flex-end;
-  align-items: flex-start;
-  display: flex !important;
-  z-index: 101;
-  width: 100vh;
-  height: 100vh;
-  background-color: #fff;
-  position: absolute;
-  left: 0;
-  top: 64px;
-  padding: 15px;
-  box-shadow: 1px 5px 18px black;
-}
-
-.column a {
-  color: #120f0f !important;
-  padding: 11px 0px;
-  font-weight: 400;
 }
 
 .nav a {
   text-decoration: none;
-  color: #333;
+  font-size: 16px;
+  font-weight: 400;
 }
 .nav__brand {
   font-size: 25px;
@@ -206,18 +181,13 @@ nav {
   color: rgb(132, 184, 56);
 }
 .nav__button {
-  font-size: 25px;
   background: none;
-  color: white;
   outline: none;
   border: none;
 }
 .nav__button .nav__icon {
   font-size: 25px;
-  background: none;
   color: white;
-  outline: none;
-  border: none;
   cursor: pointer;
 }
 .nav__link {
@@ -225,78 +195,66 @@ nav {
 }
 .nav__link a {
   color: rgb(216, 226, 216);
-  font-size: 16px;
   text-transform: uppercase;
   margin-right: 15px;
 }
+.active-nav {
+  color: rgb(14, 233, 80) !important;
+}
 img.nav-profile {
   width: 30px;
+  height: 30px;
   border-radius: 50px;
 }
-.card_width {
-  width: 255px;
-  transition: all 0.5s;
-  margin: 10px auto !important;
+@media screen and (max-width: 768px) {
+  .nav__link {
+    display: flex;
+    flex-direction: column-reverse;
+    position: absolute;
+    top: 57px;
+    left: -100%;
+    background: #373636;
+    z-index: 101;
+    padding: 1rem;
+    justify-content: flex-end;
+    height: 100vh;
+    width: 100vw;
+    transition: all 1s;
+  }
+  .nav__link a:not(:last-child) {
+    margin-top: 0.5rem;
+    font-weight: 600;
+  }
+  .nav__link a:hover {
+    border-bottom: 1px solid red;
+  }
+  .sidenav-show {
+    animation: sidenav 0.5s ease-in forwards;
+  }
+
+  @keyframes sidenav {
+    0% {
+      left: -100%;
+    }
+    50% {
+      left: -75%;
+    }
+    75% {
+      left: -25%;
+    }
+    100% {
+      left: -0%;
+    }
+  }
+
+  .active-nav {
+    color: rgb(14, 233, 80) !important;
+  }
+  .title {
+    font-size: 0.6rem;
+  }
 }
-.card_width:hover {
-  width: 255px;
-  box-shadow: 1px 4px 7px #1a1818;
-}
-.card-img-top {
-  width: 150px;
-  border-radius: 100px;
-  height: 150px;
-  margin: 0 auto;
-  margin-top: 30px;
-}
-.card-body {
-  text-align: center;
-}
-.card-title {
-  margin-bottom: 0.1rem;
-  font-size: 25px;
-  text-transform: capitalize !important;
-}
-.card-text {
-  margin-bottom: 5px !important;
-  font-weight: 400;
-}
-.card-body .btn {
-  margin: 0 !important;
-  font-size: 18px;
-}
-.card-body .btn:hover {
-  color: white;
-}
-.file {
-  display: none;
-}
-label.file_label {
-  font-size: 18px;
-  color: white;
-  background: #60d860;
-  padding: 10px;
-  border: none;
-  outline: 0;
-  font-weight: 400;
-  border-radius: 6px;
-}
-button.file_submit {
-  display: block;
-  margin: auto;
-  margin-top: 10px;
-  font-size: 18px;
-  color: white;
-  background: #60d860;
-  padding: 10px;
-  border: none;
-  outline: 0;
-  font-weight: 400;
-  border-radius: 6px;
-}
-.height-vh-100 {
-  height: 100vh;
-}
+
 /* navbar design end */
 
 /* login and sugn up form start */
@@ -367,7 +325,6 @@ button.file_submit {
 }
 .grid_container > div {
   border: 1px solid black;
-  /* padding: 10px; */
 }
 .grid_container > div span {
   display: block;
@@ -549,3 +506,167 @@ button.file_submit {
 }
 
 /* marketing cost page design end */
+
+/* user profile design start */
+.user {
+  margin: 0 auto;
+}
+.user .col-md-4 {
+  margin: 0 auto !important;
+}
+.card_width {
+  max-width: 100%;
+  width: 100%;
+  transition: all 0.5s;
+  margin: 10px auto !important;
+}
+.card_width:hover {
+  box-shadow: 1px 4px 7px #1a1818;
+}
+.card-img-top {
+  width: 150px;
+  border-radius: 100px;
+  height: 150px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.profile_card_body {
+  padding-top: 0;
+  padding-bottom: 0.8rem;
+}
+.card-body {
+  text-align: center;
+}
+.card-title {
+  margin-bottom: 0.1rem;
+  font-size: 25px;
+  text-transform: capitalize !important;
+}
+.card-text {
+  margin-bottom: 5px !important;
+  font-weight: 400;
+}
+
+.file {
+  display: none;
+}
+label.file_label {
+  box-shadow: 1px 0px 4px grey !important;
+  font-size: 0.5rem;
+  color: white;
+  background: #9fa59f;
+  padding: 0.3rem;
+  border: none;
+  outline: 0;
+  font-weight: 400;
+  border-radius: 6px;
+  width: 5rem;
+  margin: 0.3rem auto;
+  transition: all 0.5s;
+}
+label.file_label:hover {
+  background: rgb(107, 106, 106);
+}
+.edit_profile {
+  box-shadow: 1px 0px 4px grey !important;
+  font-size: 0.5rem;
+  color: white;
+  background: #9fa59f;
+  padding: 0.3rem;
+  border: none;
+  outline: 0;
+  font-weight: 400;
+  border-radius: 6px;
+  width: 3rem;
+  margin: 0.3rem auto;
+  transition: all 0.5s;
+  font-weight: 600;
+}
+.edit_profile:hover {
+  background: rgb(107, 106, 106);
+  color: white;
+}
+
+.profile_name {
+  font-size: 0.8rem;
+  border-radius: 0.4rem;
+  outline: 0;
+  text-align: center;
+  margin-top: 0.3rem;
+  border: none;
+  max-width: 100%;
+  box-shadow: 1px 0px 4px grey;
+  width: 100%;
+  background: #eeeeee;
+  text-transform: capitalize;
+}
+
+.profile_desig {
+  font-size: 0.8rem;
+  border-radius: 0.4rem;
+  outline: 0;
+  text-align: center;
+  margin-top: 0.3rem;
+  border: none;
+  max-width: 100%;
+  box-shadow: 1px 0px 4px grey;
+  width: 100%;
+  background: #eeeeee;
+  text-transform: capitalize;
+}
+.profile_phone {
+  font-size: 0.8rem;
+  border-radius: 0.4rem;
+  outline: 0;
+  text-align: center;
+  margin-top: 0.3rem;
+  border: none;
+  max-width: 100%;
+  box-shadow: 1px 0px 4px grey;
+  width: 100%;
+  background: #eeeeee;
+  text-transform: capitalize;
+}
+.user_profile_input {
+  font-size: 0.8rem;
+  border-radius: 0.4rem;
+  outline: 0;
+  text-align: center;
+  margin-top: 0.3rem;
+  border: none;
+  max-width: 100%;
+  box-shadow: 1px 0px 4px grey;
+  width: 100%;
+  background: #eeeeee;
+  text-transform: capitalize;
+}
+.user_profile_input::placeholder {
+  text-align: left;
+  padding-left: 20px;
+}
+@media screen and (max-width: 768px) {
+  .user_profile_input {
+    font-size: 0.6rem;
+  }
+  .profile_name {
+    font-size: 0.6rem;
+  }
+  .profile_desig {
+    font-size: 0.6rem;
+  }
+  .profile_phone {
+    font-size: 0.6rem;
+  }
+}
+.profile_submit_button {
+  width: 5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 0.1rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 1px 0px 4px grey;
+}
+
+/* user profile design end */

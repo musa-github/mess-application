@@ -2,17 +2,19 @@ import React, { useContext, useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Store } from "../context";
 import { db, storage } from "../firebase";
+import UserProfileShow from "./UserProfileShow";
 
-function UserProfile(props) {
+function UserProfile() {
   const { currentUser, userDetails } = useContext(Store);
   const nameRef = useRef();
   const desigRef = useRef();
   const phoneRef = useRef();
   const history = useHistory();
-
   const [file, setFile] = useState();
+  const [edit, setEdit] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
+  const handlefile = (e) => {
     if (e.target.files[0]) {
       return setFile(e.target.files[0]);
     }
@@ -20,7 +22,6 @@ function UserProfile(props) {
 
   const onsubmit = (e) => {
     e.preventDefault();
-
     const uploadTask = storage.ref(`images/${file.name}`).put(file);
     uploadTask.on(
       "state changed",
@@ -37,6 +38,7 @@ function UserProfile(props) {
           .child(file.name)
           .getDownloadURL()
           .then((url) => {
+            setLoading(true);
             if (currentUser) {
               db.collection("memberInfo").doc(currentUser.uid).update({
                 url: url,
@@ -45,15 +47,20 @@ function UserProfile(props) {
                 phone: phoneRef.current.value,
               });
               history.push("/");
+              setLoading(false);
             }
           });
       }
     );
   };
 
+  const handleEdit = (e) => {
+    setEdit(false);
+  };
+
   return (
     <div className="row user mt-2">
-      <div className="col-md-6 offset-3 text-center ">
+      <div className="col-md-4  text-center ">
         <form onSubmit={onsubmit}>
           <div className="card card_width ">
             <img
@@ -65,61 +72,65 @@ function UserProfile(props) {
               }
               alt="set profile"
             />
+            <span
+              className={edit ? " d-inline-block edit_profile btn" : "d-none "}
+              onClick={handleEdit}
+            >
+              Edit
+            </span>
 
-            <label htmlFor="file" className="file_label">
-              Choge profile
-            </label>
-            <input
-              onChange={handleChange}
-              className="file"
-              type="file"
-              name="file"
-              id="file"
-            />
+            <div className="card-body profile_card_body">
+              {edit ? (
+                <UserProfileShow />
+              ) : (
+                <>
+                  <label htmlFor="file" className="file_label">
+                    Choge profile
+                  </label>
+                  <input
+                    required
+                    onChange={handlefile}
+                    className="file"
+                    type="file"
+                    name="file"
+                    id="file"
+                  />
+                  <input
+                    required
+                    readOnly={edit}
+                    ref={nameRef}
+                    type="text"
+                    placeholder="Name : "
+                    className="user_profile_input"
+                  />
 
-            <div className="card-body">
-              <h3 className="card-title">
-                {userDetails ? userDetails.name : "your name"}
-              </h3>
-              <p className="card-text">
-                {userDetails ? userDetails.desig : "your designation"}
-              </p>
+                  <input
+                    required
+                    readOnly={edit}
+                    ref={desigRef}
+                    type="text"
+                    placeholder="Desig : "
+                    className="user_profile_input"
+                  />
+
+                  <input
+                    readOnly={edit}
+                    ref={phoneRef}
+                    type="text"
+                    placeholder="Phone : "
+                    className="user_profile_input"
+                  />
+                  <button
+                    className="btn btn-primary profile_submit_button"
+                    type="submit"
+                    disabled={loading}
+                  >
+                    Submit
+                  </button>
+                </>
+              )}
             </div>
           </div>
-
-          <div className="form-group">
-            <label htmlFor="name"> Name</label>
-            <input
-              ref={nameRef}
-              type="text"
-              name="name"
-              id="name"
-              className="form-control"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="Designation"> Designation</label>
-            <input
-              ref={desigRef}
-              type="text"
-              name="Designation"
-              id="Designation"
-              className="form-control"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="phone"> Phone number</label>
-            <input
-              ref={phoneRef}
-              type="number"
-              name="phone"
-              id="phone"
-              className="form-control"
-            />
-          </div>
-          <button className="btn btn-primary" type="submit">
-            Submit
-          </button>
         </form>
       </div>
     </div>

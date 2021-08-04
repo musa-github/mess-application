@@ -1,12 +1,11 @@
 import React, { useContext, useState } from "react";
 import { FaAlignRight } from "react-icons/fa";
-import { Link, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { Store } from "../context";
 import { auth } from "../firebase";
 import NavUserIcon from "./NavUserIcon";
 function NavBar() {
   const { currentUser, userDetails } = useContext(Store);
-  // console.log(" user from navbar", currentUser.email);
   const [error, setError] = useState();
   const [navLink, setnavLink] = useState(false);
   const history = useHistory();
@@ -44,43 +43,77 @@ function NavBar() {
           </button>
         </Link>
 
-        <div
-          className={
-            navLink
-              ? " nav__link d-block column side-nav"
-              : "nav__link d-md-block d-none"
-          }
-        >
-          <Link to="/"> home</Link>
-          <Link
-            className={email !== adminEmail ? "d-none" : "d-inline-block"}
+        <div className={navLink ? "sidenav-show nav__link" : "nav__link"}>
+          <NavLink
+            to="/"
+            onClick={handleNavlink}
+            activeClassName="active-nav"
+            exact
+          >
+            home
+          </NavLink>
+          <NavLink
             to="/present"
+            onClick={handleNavlink}
+            className={email !== adminEmail ? "d-none" : "d-inline-block"}
+            activeClassName="active-nav"
+            exact
           >
             present
-          </Link>
-          <Link
-            className={email !== adminEmail ? "d-none" : "d-inline-block"}
+          </NavLink>
+          <NavLink
             to="/marketingCost"
+            onClick={handleNavlink}
+            className={email !== adminEmail ? "d-none" : "d-inline-block"}
+            activeClassName="active-nav"
+            exact
           >
             marketingCost
-          </Link>
+          </NavLink>
 
-          <Link
-            className={email !== adminEmail ? "d-none" : "d-inline-block"}
+          <NavLink
             to="/admin"
+            onClick={handleNavlink}
+            className={email !== adminEmail ? "d-none" : "d-inline-block"}
+            activeClassName="active-nav"
+            exact
           >
             admin
-          </Link>
+          </NavLink>
 
-          <Link to="/login"> login</Link>
-          <Link to="/signUp"> sign up</Link>
-          <Link to="/logout" onClick={handleLogout}>
+          <NavLink
+            to="/login"
+            onClick={handleNavlink}
+            activeClassName="active-nav"
+            exact
+          >
+            login
+          </NavLink>
+          <NavLink
+            to="/signUp"
+            onClick={handleNavlink}
+            activeClassName="active-nav"
+            exact
+          >
+            sign up
+          </NavLink>
+          <NavLink
+            to="/logout"
+            onClick={handleLogout}
+            activeClassName="active-nav"
+            exact
+          >
             Log out
-          </Link>
+          </NavLink>
 
-          <Link to="/userProfileParent">
+          <NavLink
+            to="/userProfileParent"
+            onClick={handleNavlink}
+            activeClassName="active-nav"
+            exact
+          >
             {userDetails ? <NavUserIcon /> : "profile"}
-          </Link>
+          </NavLink>
         </div>
       </div>
     </nav>
