@@ -55,7 +55,7 @@ function UserProfile() {
   };
 
   const handleEdit = (e) => {
-    setEdit(false);
+    setEdit(!edit);
   };
 
   return (

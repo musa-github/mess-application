@@ -58,9 +58,9 @@ static contextType= Store;
             totalMembersMill: totalMembersMill.reduce((accumutive, current) => {
               return accumutive + current;
             }, 0),
-            milRate:this.state.totalMarketingCost /this.state.totalMembersMill,
             messDabte:this.state.currentDiposit - this.state.totalMillCost,
             messOwe:this.state.totalMillCost - this.state.currentDiposit,
+            milRate:this.state.totalMarketingCost /this.state.totalMembersMill,
             totalMillCost:this.state.milRate*this.state.totalMill,
             
         });

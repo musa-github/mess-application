@@ -12,8 +12,8 @@ function SingleMemberInfo(props) {
       .onSnapshot(async (snapshot) => {
         await setInfo(snapshot.data());
       });
-  });
-
+  }, []);
+  console.log(info);
   return (
     <SingleInfo
       cashDiposit={info.cashDiposit}
@@ -27,6 +27,9 @@ function SingleMemberInfo(props) {
       milRate={info.milRate}
       totalMillCost={info.totalMillCost}
       totalMembersMill={info.totalMembersMill}
+      url={info.url}
+      name={info.name}
+      desig={info.desig}
     />
   );
 }

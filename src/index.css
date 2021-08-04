@@ -178,7 +178,7 @@ table .input_desig {
   font-size: 25px;
   text-transform: uppercase;
   font-weight: bold;
-  color: rgb(132, 184, 56);
+  color: #22d516;
 }
 .nav__button {
   background: none;
@@ -317,53 +317,66 @@ img.nav-profile {
 
 /* Single member information table design start */
 
-.grid_container {
-  display: grid;
-  height: 50vh;
-  grid-template-columns: 2fr repeat(auto-fit, minmax(50px, 1fr));
-  grid-template-rows: repeat(12, 1fr);
+.single_info {
+  width: 100%;
 }
-.grid_container > div {
-  border: 1px solid black;
+.single_info .col-md-10 {
+  margin: 0 auto;
 }
-.grid_container > div span {
-  display: block;
-  border-bottom: 2px solid black;
-  text-align: center;
-  font-size: 18px;
+.single_info .card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-pic {
+  width: 24%;
+  padding: 1rem;
+  background: #eeeeee;
+  box-shadow: 0px 0px 11px #00000070;
+}
+.profile-pic .card-text {
+  font-size: 1rem !important;
   font-weight: 500;
 }
-.grid_container > div p {
-  text-align: center;
-  font-size: 18px;
+.single_info .taka {
+  background: #eeeeee;
+  width: 24%;
+  padding: 1rem;
+  box-shadow: 0px 0px 11px #00000070;
 }
-.purticuler {
-  grid-row: 1/-1;
+.single_info .marketing__cost {
+  background: #eeeeee;
+  width: 24%;
+  padding: 1rem;
+  box-shadow: 0px 0px 11px #00000070;
 }
-.taka {
-  grid-row: 1/-1;
+.single_info .mill {
+  background: #eeeeee;
+  width: 24%;
+  padding: 1rem;
+  box-shadow: 0px 0px 11px #00000070;
 }
-.current__taka {
-  grid-row: 1/-1;
-}
-.total__mill {
-  grid-row: 1/-1;
-}
-.total__mill p {
-  margin-top: auto;
-}
-.all__Mills {
-  grid-row: 1/-1;
-}
-.mill__rate {
-  grid-row: 1/-1;
-}
-.marketing__cost {
-  grid-row: 1/-1;
-}
-
-.total__mill__cost {
-  grid-row: 1/-1;
+@media screen and (max-width: 992px) {
+  .single_info .card-body {
+    flex-direction: column;
+  }
+  .profile-pic {
+    width: 100%;
+  }
+  .profile-pic .card-text {
+    font-size: 1rem !important;
+    font-weight: 500;
+  }
+  .single_info .taka {
+    background: #eeeeee;
+    width: 100%;
+  }
+  .single_info .marketing__cost {
+    width: 100%;
+  }
+  .single_info .mill {
+    width: 100%;
+  }
 }
 /* Single member information table design end */
 /* present page design start */

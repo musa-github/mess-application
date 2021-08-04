@@ -7,10 +7,10 @@ function UserProfileShow() {
   return (
     <div>
       <p className="profile_name">
-        {userDetails ? userDetails.name : "your name"}{" "}
+        {userDetails ? userDetails.name : "your name"}
       </p>
       <p className="profile_desig">
-        {userDetails ? userDetails.desig : "your designation"}{" "}
+        {userDetails ? userDetails.desig : "your designation"}
       </p>
       <p className="profile_phone">
         {userDetails ? userDetails.phone : "your phone"}
