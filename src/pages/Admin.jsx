@@ -16,11 +16,12 @@ export default class Admin extends Component {
         <Title title="Mess Account Ror The Month Of June" />
 
         <AdminHeading />
-        {memberInfo.map((item) => {
+        {memberInfo.map((item, index) => {
           return (
             <AdminForm
               key={item.id}
-              sl={item.memberInfo.sl}
+              sl={index}
+              id={item.id}
               name={item.memberInfo.name}
               desig={item.memberInfo.desig}
               cashDiposit={item.memberInfo.cashDiposit}
@@ -28,13 +29,12 @@ export default class Admin extends Component {
               previousOwe={item.memberInfo.previousOwe}
               currentDiposit={item.memberInfo.currentDiposit}
               totalMarketingCost={item.memberInfo.totalMarketingCost}
+              totalMembersMill={item.memberInfo.totalMembersMill}
               messDabte={item.memberInfo.messDabte}
               messOwe={item.memberInfo.messOwe}
-              totalMill={item.memberInfo.totalMill}
+              totalMill={item.memberInfo.mills.totalMill}
               milRate={item.memberInfo.milRate}
               totalMillCost={item.memberInfo.totalMillCost}
-              totalMembersMill={item.memberInfo.totalMembersMill}
-              id={item.id}
             />
           );
         })}

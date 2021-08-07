@@ -7,7 +7,9 @@ export default class StoreProvider extends Component {
    totalMembersMill:[],
    loading:true,
    currentUser:"",
-   userDetails:{}
+   userDetails:{},
+   marketing:[],
+   totalMarketing:[]
   }
   //getData
   componentDidMount() {
@@ -25,20 +27,32 @@ export default class StoreProvider extends Component {
              return {id:doc.id, memberInfo:doc.data()}
           }),
            totalMembersMill:snapshot.docs.map(doc=>{
-             return doc.data().totalMill
+             return doc.data().mills.totalMill
         })})});
+
+     db.collection("marketing").orderBy("date","asc").onSnapshot(snapshot=>{
+        this.setState({
+          marketing: snapshot.docs.map(doc=>{
+            return {id:doc.id, marketing:doc.data()}
+          })
+        })
+     })
+
+
               this.setState({loading:false})
         }else{
           this.setState({memberInfo:[]});   
         }  
-      })     
+      })  
+        
 }
+ 
   render() {
     
     return (
       <Store.Provider value={{
          ...this.state,
-      getSingleMemInfo:this.getSingleMemInfo }}>
+       }}>
         {this.props.children}
       </Store.Provider>
     );

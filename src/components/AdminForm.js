@@ -1,72 +1,75 @@
 import React, { Component } from "react";
 import { Store } from "../context";
 import { db } from "../firebase";
+
 export default class AdminForm extends Component {
+  
 static contextType= Store;
   constructor(props) {
     super(props);
     this.state = {
       sl:this.props.sl,
-      name: this.props.name,
+      name: this.props.name,      
       desig: this.props.desig,
-      cashDiposit: this.props.cashDiposit,
-      perviousDiposited: this.props.perviousDiposited,
-      previousOwe: this.props.previousOwe,
-      currentDiposit: this.props.currentDiposit,
-      totalMarketingCost: this.props.totalMarketingCost,
-      messDabte: this.props.messDabte,
-      messOwe: this.props.messOwe,
+      cashDiposit: "",
+      perviousDiposited: "",
+      previousOwe: "",
+      currentDiposit: "",
+      totalMarketingCost: "",
+      messDabte: "",
+      messOwe: "",
       totalMill: this.props.totalMill,
-      milRate: this.props.milRate,
-      totalMillCost: this.props.totalMillCost,
-      totalMembersMill: this.props.totalMembersMill,
-      id: this.props.id,
+      milRate: "",
+      totalMillCost: "",
+      
+     
     };
   }
-
   handleChange = (e) => {
-   
-    this.setState(() => {
-      if (e.target.type !== "text") {
-        return {
-          
-          [e.target.name]: Number(e.target.value),
-        };
-       
-      } else {
-        return {
-          ...this.state,
-          [e.target.name]: e.target.value,
-        };
-      }
-    });
-  
-  };
+    const {totalMembersMill,marketing}=this.context;
+    const data = marketing.map(item=>{
+      return item.marketing.taka
+    })
+    if(e.target.type=== "text"){
+      this.setState({
+        ...this.state,
+        [e.target.name]:e.target.value
+      })
+    }else{
+          this.setState({
+            ...this.state,
+          [e.target.name]:parseInt(e.target.value),
+         currentDiposit:this.state.cashDiposit +this.state.perviousDiposited-this.state.previousOwe,
+         messDabte:this.state.currentDiposit - this.state.totalMillCost,
+         messOwe:this.state.totalMillCost - this.state.currentDiposit,
+         totalMembersMill: totalMembersMill.reduce((accumutive, current) => {
+          return accumutive + current;
+         }, 0),
+         totalMarketingCost:data.reduce((accumutive,current)=>{
+          return accumutive + current
+         },0),
+         milRate:Math.round(this.state.totalMarketingCost /this.state.totalMembersMill),
+         totalMillCost:this.state.milRate*this.state.totalMill,
+
+
+      })
+    }
+  }
   handleKeyPress = async(e) => {
-    const {totalMembersMill}=this.context;
+    
     if (e.key === "Enter") {
      await db.collection("memberInfo")
         .doc(this.props.id)
         .update({
-          
-          [e.target.name]:
-            e.target.type === "text" ? e.target.value : Number(e.target.value),
-          currentDiposit:
-            this.state.cashDiposit +
-            this.state.perviousDiposited -
-            this.state.previousOwe,
-            totalMembersMill: totalMembersMill.reduce((accumutive, current) => {
-              return accumutive + current;
-            }, 0),
-            messDabte:this.state.currentDiposit - this.state.totalMillCost,
-            messOwe:this.state.totalMillCost - this.state.currentDiposit,
-            milRate:this.state.totalMarketingCost /this.state.totalMembersMill,
-            totalMillCost:this.state.milRate*this.state.totalMill,
-            
+          ...this.state,   
         });
         
     }
   };
+  
+ 
+   
+ 
   render() {
     const {
       sl,
@@ -82,21 +85,8 @@ static contextType= Store;
       totalMill,
       milRate,
       totalMillCost,
-    } = this.state;
-    console.log( sl,
-      name,
-      desig,
-      cashDiposit,
-      perviousDiposited,
-      previousOwe,
-      currentDiposit,
-      totalMarketingCost,
-      messDabte,
-      messOwe,
-      totalMill,
-      milRate,
-      totalMillCost
-    )
+    } = this.props;
+    
    
     return (
       <div className="container">

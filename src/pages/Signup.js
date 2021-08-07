@@ -12,9 +12,7 @@ function Signup() {
   const history = useHistory()
 
   async function handleSubmit(e) {
-    e.preventDefault()
-   
-
+     e.preventDefault();
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
       return setError(
         "Password does not matching plese input correct password"
@@ -30,10 +28,11 @@ function Signup() {
       await auth.createUserWithEmailAndPassword(
         emailRef.current.value,
         passwordRef.current.value
-      ).then(cred=>{
+      )
+      .then(cred=>{
+        console.log(cred)
         return db.collection("memberInfo").doc(cred.user.uid).set({
-          
-      sl: null,
+
       name: "",
       desig: "",
       phone:"",
@@ -45,7 +44,6 @@ function Signup() {
       totalMarketingCost: null,
       messDabte: null,
       messOwe: null,
-      totalMill: null,
       milRate: null,
       totalMillCost: null,
       totalMembersMill: null,
